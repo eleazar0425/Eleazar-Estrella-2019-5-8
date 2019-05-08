@@ -6,7 +6,13 @@ target 'Pelina Beer App' do
   use_frameworks!
 
   # Pods for Pelina Beer App
+  pod 'Moya-ModelMapper/RxSwift'
+  pod 'Moya/RxSwift'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'AlamofireImage'
 
+  
   target 'Pelina Beer AppTests' do
     inherit! :search_paths
     # Pods for testing
