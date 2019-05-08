@@ -1,7 +1,5 @@
 PODS:
   - Alamofire (4.8.0)
-  - AlamofireImage (3.5.0):
-    - Alamofire (~> 4.8)
   - Cosmos (17.0.0)
   - ModelMapper (9.0.1):
     - ModelMapper/Core (= 9.0.1)
@@ -21,6 +19,7 @@ PODS:
   - Moya/RxSwift (11.0.2):
     - Moya/Core
     - RxSwift (~> 4.0)
+  - Nuke (7.5.1)
   - Result (3.2.4)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
@@ -29,21 +28,21 @@ PODS:
     - RxAtomic (~> 4.4)
 
 DEPENDENCIES:
-  - AlamofireImage
   - Cosmos
   - Moya-ModelMapper/RxSwift
   - Moya/RxSwift
+  - Nuke
   - RxCocoa
   - RxSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - AlamofireImage
     - Cosmos
     - ModelMapper
     - Moya
     - Moya-ModelMapper
+    - Nuke
     - Result
     - RxAtomic
     - RxCocoa
@@ -51,16 +50,16 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
   ModelMapper: 89a61430a75e6265040dc9555ab1feddeb25b986
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Moya-ModelMapper: 35209257d9e886cedf91289559a41723f5fbd095
+  Nuke: 3814db501e55f17951451839c726ffd91641e9a5
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 24c13cca9aa8603251072126b3a974caf4517eec
+PODFILE CHECKSUM: 005004f6643e112ca3250ac095cd43d5f623429d
 
 COCOAPODS: 1.5.3

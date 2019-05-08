@@ -10,7 +10,7 @@ target 'Pelina Beer App' do
   pod 'Moya/RxSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'AlamofireImage'
+  pod 'Nuke'
   pod 'Cosmos'
 
   

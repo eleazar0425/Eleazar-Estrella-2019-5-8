@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Mapper
-import AlamofireImage
+import Nuke
 
 
 class MoviePresentationViewController: UIViewController {
@@ -24,7 +24,8 @@ class MoviePresentationViewController: UIViewController {
         //Bind movies to collectionView
         viewModel.movies.bind(to: self.colllectionView.rx.items(cellIdentifier: "movieCollectionViewCell", cellType: MovieCollectionViewCell.self)) { row, movie, cell in
             guard let poster = movie.poster else { return }
-            cell.posterImageView.af_setImage(withURL: URL(string: AppConfig.IMAGE_BASE_PATH + poster)!)
+            cell.posterImageView.image = nil
+            Nuke.loadImage(with: URL(string: AppConfig.IMAGE_BASE_PATH + poster)!, into: cell.posterImageView)
         }.disposed(by: disposeBag)
         
         //Binds contentOffset to viewmodel#loadMore, so it will emit true or false depending on the status of the scroll
