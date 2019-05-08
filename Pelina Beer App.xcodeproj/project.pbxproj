@@ -13,6 +13,10 @@
 		105ECCC2228364FD0058A181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 105ECCC1228364FD0058A181 /* Assets.xcassets */; };
 		105ECCC5228364FD0058A181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 105ECCC3228364FD0058A181 /* LaunchScreen.storyboard */; };
 		105ECCD0228364FD0058A181 /* Pelina_Beer_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCCF228364FD0058A181 /* Pelina_Beer_AppTests.swift */; };
+		105ECCDC228371670058A181 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCDB228371670058A181 /* HomeViewController.swift */; };
+		105ECCDE228372D20058A181 /* MoviePresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCDD228372D20058A181 /* MoviePresentationViewController.swift */; };
+		105ECCE02283737E0058A181 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCDF2283737E0058A181 /* HomeCoordinator.swift */; };
+		105ECCE5228373C10058A181 /* StoryBoard+main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCE4228373C10058A181 /* StoryBoard+main.swift */; };
 		4686E98D7FA7D050141D86BD /* Pods_Pelina_Beer_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */; };
 		CC2087DDD92EDBD9AD681CA0 /* Pods_Pelina_Beer_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DB3755667C3C0CA717A6E8 /* Pods_Pelina_Beer_AppTests.framework */; };
 /* End PBXBuildFile section */
@@ -38,6 +42,10 @@
 		105ECCCB228364FD0058A181 /* Pelina Beer AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pelina Beer AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		105ECCCF228364FD0058A181 /* Pelina_Beer_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pelina_Beer_AppTests.swift; sourceTree = "<group>"; };
 		105ECCD1228364FD0058A181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		105ECCDB228371670058A181 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		105ECCDD228372D20058A181 /* MoviePresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePresentationViewController.swift; sourceTree = "<group>"; };
+		105ECCDF2283737E0058A181 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		105ECCE4228373C10058A181 /* StoryBoard+main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoryBoard+main.swift"; sourceTree = "<group>"; };
 		3AE3E10E42DD5751C8AAA773 /* Pods-Pelina Beer AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer AppTests/Pods-Pelina Beer AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F65A2CE39CDF5F24432946C /* Pods-Pelina Beer App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer App/Pods-Pelina Beer App.debug.xcconfig"; sourceTree = "<group>"; };
 		95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelina_Beer_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +97,8 @@
 		105ECCB9228364FA0058A181 /* Pelina Beer App */ = {
 			isa = PBXGroup;
 			children = (
+				105ECCE3228373A20058A181 /* Util */,
+				105ECCDA2283713E0058A181 /* UI */,
 				105ECCBA228364FA0058A181 /* AppDelegate.swift */,
 				105ECCBC228364FA0058A181 /* ViewController.swift */,
 				105ECCBE228364FA0058A181 /* Main.storyboard */,
@@ -106,6 +116,40 @@
 				105ECCD1228364FD0058A181 /* Info.plist */,
 			);
 			path = "Pelina Beer AppTests";
+			sourceTree = "<group>";
+		};
+		105ECCDA2283713E0058A181 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				105ECCE7228375D60058A181 /* Movies */,
+				105ECCE6228373F50058A181 /* Home */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		105ECCE3228373A20058A181 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				105ECCE4228373C10058A181 /* StoryBoard+main.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		105ECCE6228373F50058A181 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				105ECCDB228371670058A181 /* HomeViewController.swift */,
+				105ECCDF2283737E0058A181 /* HomeCoordinator.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		105ECCE7228375D60058A181 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				105ECCDD228372D20058A181 /* MoviePresentationViewController.swift */,
+			);
+			path = Movies;
 			sourceTree = "<group>";
 		};
 		D36B0004341ECDF3451AFB7D /* Pods */ = {
@@ -320,7 +364,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				105ECCBD228364FA0058A181 /* ViewController.swift in Sources */,
+				105ECCE5228373C10058A181 /* StoryBoard+main.swift in Sources */,
 				105ECCBB228364FA0058A181 /* AppDelegate.swift in Sources */,
+				105ECCE02283737E0058A181 /* HomeCoordinator.swift in Sources */,
+				105ECCDC228371670058A181 /* HomeViewController.swift in Sources */,
+				105ECCDE228372D20058A181 /* MoviePresentationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

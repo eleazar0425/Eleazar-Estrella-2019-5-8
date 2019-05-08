@@ -13,7 +13,7 @@
         <!--Pelina Beer-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pelina_Beer_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="moviesPresentationViewController" id="BYZ-38-t0r" customClass="MoviePresentationViewController" customModule="Pelina_Beer_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VPd-zI-tya">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VPd-zI-tya" customClass="movieCellIndetifier">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="137" y="2301"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Home View Controller-->
         <scene sceneID="EUa-kd-sud">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uIX-U2-Tfz" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uIX-U2-Tfz" customClass="HomeViewController" customModule="Pelina_Beer_App" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DbF-wT-DQS">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
