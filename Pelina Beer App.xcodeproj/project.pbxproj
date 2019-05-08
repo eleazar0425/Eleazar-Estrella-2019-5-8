@@ -13,6 +13,8 @@
 		105ECCC2228364FD0058A181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 105ECCC1228364FD0058A181 /* Assets.xcassets */; };
 		105ECCC5228364FD0058A181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 105ECCC3228364FD0058A181 /* LaunchScreen.storyboard */; };
 		105ECCD0228364FD0058A181 /* Pelina_Beer_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCCF228364FD0058A181 /* Pelina_Beer_AppTests.swift */; };
+		4686E98D7FA7D050141D86BD /* Pods_Pelina_Beer_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */; };
+		CC2087DDD92EDBD9AD681CA0 /* Pods_Pelina_Beer_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DB3755667C3C0CA717A6E8 /* Pods_Pelina_Beer_AppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,12 @@
 		105ECCCB228364FD0058A181 /* Pelina Beer AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pelina Beer AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		105ECCCF228364FD0058A181 /* Pelina_Beer_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pelina_Beer_AppTests.swift; sourceTree = "<group>"; };
 		105ECCD1228364FD0058A181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AE3E10E42DD5751C8AAA773 /* Pods-Pelina Beer AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer AppTests/Pods-Pelina Beer AppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6F65A2CE39CDF5F24432946C /* Pods-Pelina Beer App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer App/Pods-Pelina Beer App.debug.xcconfig"; sourceTree = "<group>"; };
+		95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelina_Beer_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A106F01804B570356D098361 /* Pods-Pelina Beer App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer App/Pods-Pelina Beer App.release.xcconfig"; sourceTree = "<group>"; };
+		A93E87CAA5A970F280FFD0C8 /* Pods-Pelina Beer AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer AppTests/Pods-Pelina Beer AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9DB3755667C3C0CA717A6E8 /* Pods_Pelina_Beer_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelina_Beer_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4686E98D7FA7D050141D86BD /* Pods_Pelina_Beer_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC2087DDD92EDBD9AD681CA0 /* Pods_Pelina_Beer_AppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,8 @@
 				105ECCB9228364FA0058A181 /* Pelina Beer App */,
 				105ECCCE228364FD0058A181 /* Pelina Beer AppTests */,
 				105ECCB8228364FA0058A181 /* Products */,
+				D36B0004341ECDF3451AFB7D /* Pods */,
+				ED3B3E73B9143CEEA973CA72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +108,26 @@
 			path = "Pelina Beer AppTests";
 			sourceTree = "<group>";
 		};
+		D36B0004341ECDF3451AFB7D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F65A2CE39CDF5F24432946C /* Pods-Pelina Beer App.debug.xcconfig */,
+				A106F01804B570356D098361 /* Pods-Pelina Beer App.release.xcconfig */,
+				3AE3E10E42DD5751C8AAA773 /* Pods-Pelina Beer AppTests.debug.xcconfig */,
+				A93E87CAA5A970F280FFD0C8 /* Pods-Pelina Beer AppTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ED3B3E73B9143CEEA973CA72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */,
+				E9DB3755667C3C0CA717A6E8 /* Pods_Pelina_Beer_AppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,6 +135,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 105ECCD4228364FD0058A181 /* Build configuration list for PBXNativeTarget "Pelina Beer App" */;
 			buildPhases = (
+				9391A84BA345B7BA8C61CAD5 /* [CP] Check Pods Manifest.lock */,
 				105ECCB3228364F90058A181 /* Sources */,
 				105ECCB4228364F90058A181 /* Frameworks */,
 				105ECCB5228364F90058A181 /* Resources */,
@@ -120,6 +153,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 105ECCD7228364FD0058A181 /* Build configuration list for PBXNativeTarget "Pelina Beer AppTests" */;
 			buildPhases = (
+				E39E88816CD6EED4917BA37A /* [CP] Check Pods Manifest.lock */,
 				105ECCC7228364FD0058A181 /* Sources */,
 				105ECCC8228364FD0058A181 /* Frameworks */,
 				105ECCC9228364FD0058A181 /* Resources */,
@@ -191,6 +225,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9391A84BA345B7BA8C61CAD5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pelina Beer App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E39E88816CD6EED4917BA37A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pelina Beer AppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		105ECCB3228364F90058A181 /* Sources */ = {
@@ -358,6 +439,7 @@
 		};
 		105ECCD5228364FD0058A181 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F65A2CE39CDF5F24432946C /* Pods-Pelina Beer App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +458,7 @@
 		};
 		105ECCD6228364FD0058A181 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A106F01804B570356D098361 /* Pods-Pelina Beer App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -394,6 +477,7 @@
 		};
 		105ECCD8228364FD0058A181 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AE3E10E42DD5751C8AAA773 /* Pods-Pelina Beer AppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -415,6 +499,7 @@
 		};
 		105ECCD9228364FD0058A181 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A93E87CAA5A970F280FFD0C8 /* Pods-Pelina Beer AppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
