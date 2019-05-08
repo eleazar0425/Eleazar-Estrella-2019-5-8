@@ -11,6 +11,7 @@ target 'Pelina Beer App' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'AlamofireImage'
+  pod 'Cosmos'
 
   
   target 'Pelina Beer AppTests' do
