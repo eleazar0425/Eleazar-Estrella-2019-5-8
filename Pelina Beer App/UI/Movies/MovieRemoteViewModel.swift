@@ -12,7 +12,7 @@ import RxSwift
 class MovieRemoteViewModel: MovieViewModelType {
     var movies: Observable<[Movie]>!
     var loadMore: BehaviorSubject<Bool>!
-    var currentPage = 0
+    var currentPage = 1
     var service: MovieListingService
     
     ////Default initialization, so we can avoid a more complex DI mechanism but we're able to test correcty this viewModel
@@ -23,7 +23,7 @@ class MovieRemoteViewModel: MovieViewModelType {
         
         loadMore = BehaviorSubject(value: false)
         
-        let firstRequest = service.getMovies(page: 0, orderBy: .rating)
+        let firstRequest = service.getMovies(page: currentPage, orderBy: .rating)
         
         let nextRequest = loadMore.flatMapLatest { loadMore -> Observable<[Movie]> in
             guard loadMore else { return .empty() }

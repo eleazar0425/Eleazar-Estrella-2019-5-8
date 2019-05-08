@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VPd-zI-tya" customClass="movieCellIndetifier">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCollectionViewCell" id="VPd-zI-tya" customClass="MovieCollectionViewCell" customModule="Pelina_Beer_App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -55,6 +55,9 @@
                                             <constraint firstItem="Qf6-2m-6D3" firstAttribute="leading" secondItem="VPd-zI-tya" secondAttribute="leading" constant="3" id="mKh-bD-JfJ"/>
                                             <constraint firstItem="Qf6-2m-6D3" firstAttribute="top" secondItem="VPd-zI-tya" secondAttribute="top" constant="3" id="vpZ-Lp-nfu"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="posterImageView" destination="Qf6-2m-6D3" id="ecT-Ex-lsG"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -70,6 +73,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pelina Beer" id="hDB-in-TY5"/>
                     <connections>
+                        <outlet property="colllectionView" destination="LCm-Om-My2" id="9V7-DY-PJ8"/>
                         <segue destination="G4f-0M-TRN" kind="show" id="Gbb-02-sSN"/>
                     </connections>
                 </viewController>

@@ -17,7 +17,7 @@ class MovieListingService: MovieDataSource {
     var provider: MoyaProvider<MovieListingTarget>
     
     //Default initialization, so we can avoid a more complex DI mechanism but we're able to test correcty this service
-    init(provider: MoyaProvider<MovieListingTarget> = MoyaProvider<MovieListingTarget>()){
+    init(provider: MoyaProvider<MovieListingTarget> = MoyaProvider<MovieListingTarget>(plugins: [NetworkLoggerPlugin(verbose: true)])){
         self.provider = provider
     }
     

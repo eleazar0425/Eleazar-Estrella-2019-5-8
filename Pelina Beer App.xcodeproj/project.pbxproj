@@ -25,6 +25,8 @@
 		105ECCF622837A3C0058A181 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCF522837A3C0058A181 /* Movie.swift */; };
 		105ECCF822837B530058A181 /* MovieViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCF722837B530058A181 /* MovieViewModelType.swift */; };
 		105ECCFB22837BD80058A181 /* MovieRemoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCFA22837BD80058A181 /* MovieRemoteViewModel.swift */; };
+		105ECCFD228381530058A181 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCFC228381530058A181 /* MovieCollectionViewCell.swift */; };
+		105ECCFF228385350058A181 /* ScrollView+isNearBottomEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCFE228385350058A181 /* ScrollView+isNearBottomEdge.swift */; };
 		4686E98D7FA7D050141D86BD /* Pods_Pelina_Beer_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */; };
 		CC2087DDD92EDBD9AD681CA0 /* Pods_Pelina_Beer_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DB3755667C3C0CA717A6E8 /* Pods_Pelina_Beer_AppTests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +64,8 @@
 		105ECCF522837A3C0058A181 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		105ECCF722837B530058A181 /* MovieViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModelType.swift; sourceTree = "<group>"; };
 		105ECCFA22837BD80058A181 /* MovieRemoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRemoteViewModel.swift; sourceTree = "<group>"; };
+		105ECCFC228381530058A181 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		105ECCFE228385350058A181 /* ScrollView+isNearBottomEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+isNearBottomEdge.swift"; sourceTree = "<group>"; };
 		3AE3E10E42DD5751C8AAA773 /* Pods-Pelina Beer AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer AppTests/Pods-Pelina Beer AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F65A2CE39CDF5F24432946C /* Pods-Pelina Beer App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer App/Pods-Pelina Beer App.debug.xcconfig"; sourceTree = "<group>"; };
 		95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelina_Beer_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				105ECCE4228373C10058A181 /* StoryBoard+main.swift */,
+				105ECCFE228385350058A181 /* ScrollView+isNearBottomEdge.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				105ECCDD228372D20058A181 /* MoviePresentationViewController.swift */,
 				105ECCF722837B530058A181 /* MovieViewModelType.swift */,
 				105ECCFA22837BD80058A181 /* MovieRemoteViewModel.swift */,
+				105ECCFC228381530058A181 /* MovieCollectionViewCell.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -426,11 +432,13 @@
 				105ECCE5228373C10058A181 /* StoryBoard+main.swift in Sources */,
 				105ECCFB22837BD80058A181 /* MovieRemoteViewModel.swift in Sources */,
 				105ECCBB228364FA0058A181 /* AppDelegate.swift in Sources */,
+				105ECCFF228385350058A181 /* ScrollView+isNearBottomEdge.swift in Sources */,
 				105ECCEF2283788A0058A181 /* MovieDataSource.swift in Sources */,
 				105ECCEB228376AE0058A181 /* MovieListingTarget.swift in Sources */,
 				105ECCF822837B530058A181 /* MovieViewModelType.swift in Sources */,
 				105ECCE02283737E0058A181 /* HomeCoordinator.swift in Sources */,
 				105ECCF1228378E60058A181 /* MovieOrderType.swift in Sources */,
+				105ECCFD228381530058A181 /* MovieCollectionViewCell.swift in Sources */,
 				105ECCDC228371670058A181 /* HomeViewController.swift in Sources */,
 				105ECCDE228372D20058A181 /* MoviePresentationViewController.swift in Sources */,
 			);
