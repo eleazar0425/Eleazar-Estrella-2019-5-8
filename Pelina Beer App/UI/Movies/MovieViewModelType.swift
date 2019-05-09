@@ -8,8 +8,17 @@
 
 import Foundation
 import RxSwift
+import Action
 
 protocol MovieViewModelType {
     var movies: Observable<[Movie]>! { get }
     var loadMore: BehaviorSubject<Bool>! { get }
+    /// Call when an OrderBy value is invoked
+    var orderByAction: Action<MovieOrderType, Void>! { get }
+    /// Emits an OrderBy value when an OrderBy option is chosen.
+    var orderBy: Observable<MovieOrderType>! { get }
+    
+    var isRefreshing: Observable<Bool>! { get }
+    
+    func refresh()
 }

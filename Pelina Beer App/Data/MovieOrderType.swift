@@ -8,6 +8,17 @@
 
 import Foundation
 
-enum MovieOrderType {
-    case name, year, rating
+enum MovieOrderType: Int, CaseIterable {
+    case name = 0, year = 1 , rating = 2
+    
+    var description: String {
+        switch self {
+        case .name:
+            return "Name"
+        case .rating:
+            return "Rating"
+        case .year:
+            return "Year"
+        }
+    }
 }

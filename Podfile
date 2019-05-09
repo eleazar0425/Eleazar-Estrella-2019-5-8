@@ -9,6 +9,7 @@ target 'Pelina Beer App' do
   pod 'Moya-ModelMapper/RxSwift'
   pod 'Moya/RxSwift'
   pod 'RxSwift'
+  pod 'Action'
   pod 'RxCocoa'
   pod 'Nuke'
   pod 'Cosmos'

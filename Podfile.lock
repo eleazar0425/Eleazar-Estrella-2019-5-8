@@ -1,4 +1,7 @@
 PODS:
+  - Action (3.9.1):
+    - RxCocoa (~> 4.3)
+    - RxSwift (~> 4.3)
   - Alamofire (4.8.0)
   - Cosmos (17.0.0)
   - ModelMapper (9.0.1):
@@ -28,6 +31,7 @@ PODS:
     - RxAtomic (~> 4.4)
 
 DEPENDENCIES:
+  - Action
   - Cosmos
   - Moya-ModelMapper/RxSwift
   - Moya/RxSwift
@@ -37,6 +41,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Action
     - Alamofire
     - Cosmos
     - ModelMapper
@@ -49,6 +54,7 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
+  Action: 2f461c203c480b17aa99b3bb166e4329ecff6908
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
   ModelMapper: 89a61430a75e6265040dc9555ab1feddeb25b986
@@ -60,6 +66,6 @@ SPEC CHECKSUMS:
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 005004f6643e112ca3250ac095cd43d5f623429d
+PODFILE CHECKSUM: 0eacdba377d29a08d2ce8076b77812768e8461b2
 
 COCOAPODS: 1.5.3

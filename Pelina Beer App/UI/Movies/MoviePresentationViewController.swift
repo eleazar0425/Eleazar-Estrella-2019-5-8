@@ -36,6 +36,27 @@ class MoviePresentationViewController: UIViewController {
             }.distinctUntilChanged()
             .bind(to: viewModel.loadMore)
             .disposed(by: disposeBag)
+        
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"sortIcon"), style: .plain, target: self, action: #selector(showAlertSheet))
+
+    }
+    
+    
+    @objc func showAlertSheet(){
+        //Create a fixed size array
+        var actions = [UIAlertController.AlertAction]()
+        for type in MovieOrderType.allCases {
+            actions.append(.action(title: type.description))
+        }
+        UIAlertController
+            .present(in: self, title: "Sort by: ", message: nil, style: .actionSheet, actions: actions)
+            .distinctUntilChanged()
+            .flatMap { index in
+                return Observable.just(MovieOrderType(rawValue: index)!)
+            }.subscribe(onNext: { [unowned self] orderBy in 
+                self.viewModel.orderByAction.execute(orderBy)
+            }).disposed(by: disposeBag)
     }
 }
 
