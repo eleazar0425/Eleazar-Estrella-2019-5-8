@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol Coordinator {
-    func transition(to viewCotroller: UIViewController)
+    func transition(to target: TargetSource)
     func pop(animated: Bool)
     func presentSimpleDialog(alertViewModel: AlertViewModel)
 }
@@ -46,6 +46,15 @@ class HomeCoordinator: Coordinator {
     
     func transition(to viewCotroller: UIViewController){
         actualViewController().navigationController?.pushViewController(viewCotroller, animated: true)
+    }
+    
+    func transition(to target: TargetSource) {
+        switch target {
+        case let .movieDetail(movie):
+            let viewController = UIStoryboard.main().instantiateViewController(withIdentifier: "movieDetailViewController") as! MovieDetailViewController
+            viewController.movie = movie
+            transition(to: viewController)
+        }
     }
     
     func pop(animated: Bool) {

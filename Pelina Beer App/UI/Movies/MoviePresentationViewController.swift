@@ -37,8 +37,8 @@ class MoviePresentationViewController: UIViewController {
             .disposed(by: disposeBag)
         
         self.colllectionView.rx.modelSelected(Movie.self)
-            .subscribe(onNext: { movie in
-                print("MOVIE SELECTED: \(movie.title)")
+            .subscribe(onNext: { [unowned self] movie in
+                self.viewModel.movieDetailAction.execute(movie)
             }).disposed(by: disposeBag)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"sortIcon"), style: .plain, target: self, action: #selector(showAlertSheet))

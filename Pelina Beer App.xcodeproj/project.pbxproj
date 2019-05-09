@@ -29,6 +29,8 @@
 		105ECCFF228385350058A181 /* ScrollView+isNearBottomEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECCFE228385350058A181 /* ScrollView+isNearBottomEdge.swift */; };
 		105ECD012284575B0058A181 /* UIAlertController+RXPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105ECD002284575A0058A181 /* UIAlertController+RXPresentation.swift */; };
 		10877B0A228498CD00ED003C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B09228498CD00ED003C /* Result.swift */; };
+		10877B112284A43C00ED003C /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B102284A43C00ED003C /* MovieDetailViewController.swift */; };
+		10877B132284A61100ED003C /* TargetSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B122284A61100ED003C /* TargetSource.swift */; };
 		4686E98D7FA7D050141D86BD /* Pods_Pelina_Beer_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */; };
 		CC2087DDD92EDBD9AD681CA0 /* Pods_Pelina_Beer_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DB3755667C3C0CA717A6E8 /* Pods_Pelina_Beer_AppTests.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,8 @@
 		105ECCFE228385350058A181 /* ScrollView+isNearBottomEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+isNearBottomEdge.swift"; sourceTree = "<group>"; };
 		105ECD002284575A0058A181 /* UIAlertController+RXPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+RXPresentation.swift"; sourceTree = "<group>"; };
 		10877B09228498CD00ED003C /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		10877B102284A43C00ED003C /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		10877B122284A61100ED003C /* TargetSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetSource.swift; sourceTree = "<group>"; };
 		3AE3E10E42DD5751C8AAA773 /* Pods-Pelina Beer AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer AppTests/Pods-Pelina Beer AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F65A2CE39CDF5F24432946C /* Pods-Pelina Beer App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer App/Pods-Pelina Beer App.debug.xcconfig"; sourceTree = "<group>"; };
 		95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelina_Beer_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +153,7 @@
 		105ECCDA2283713E0058A181 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				10877B0F2284A42000ED003C /* MovieDetail */,
 				105ECCE7228375D60058A181 /* Movies */,
 				105ECCE6228373F50058A181 /* Home */,
 			);
@@ -224,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				105ECCDF2283737E0058A181 /* HomeCoordinator.swift */,
+				10877B122284A61100ED003C /* TargetSource.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -234,6 +240,14 @@
 				105ECCF0228378E60058A181 /* MovieOrderType.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		10877B0F2284A42000ED003C /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				10877B102284A43C00ED003C /* MovieDetailViewController.swift */,
+			);
+			path = MovieDetail;
 			sourceTree = "<group>";
 		};
 		D36B0004341ECDF3451AFB7D /* Pods */ = {
@@ -461,7 +475,9 @@
 				105ECCEF2283788A0058A181 /* MovieDataSource.swift in Sources */,
 				105ECCEB228376AE0058A181 /* MovieListingTarget.swift in Sources */,
 				105ECCF822837B530058A181 /* MovieViewModelType.swift in Sources */,
+				10877B132284A61100ED003C /* TargetSource.swift in Sources */,
 				105ECCE02283737E0058A181 /* HomeCoordinator.swift in Sources */,
+				10877B112284A43C00ED003C /* MovieDetailViewController.swift in Sources */,
 				105ECCF1228378E60058A181 /* MovieOrderType.swift in Sources */,
 				105ECCFD228381530058A181 /* MovieCollectionViewCell.swift in Sources */,
 				105ECCDC228371670058A181 /* HomeViewController.swift in Sources */,

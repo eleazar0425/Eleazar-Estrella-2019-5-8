@@ -23,6 +23,13 @@ class MovieRemoteViewModel: MovieViewModelType {
         }
     }()
     
+    lazy var movieDetailAction: Action<Movie, Void>! = {
+        Action<Movie, Void> { movie in
+            self.coordinator.transition(to: .movieDetail(movie: movie))
+            return .empty()
+        }
+    }()
+    
     var orderBy: Observable<MovieOrderType>!
     var isRefreshing: Observable<Bool>!
     
