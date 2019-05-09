@@ -15,7 +15,7 @@ final class Movie:  Mappable {
     var id: Int
     var overview: String
     var poster: String?
-    var voteAverage: Int
+    var voteAverage: Double
     
     init(map: Mapper) throws {
         try id = map.from("id")

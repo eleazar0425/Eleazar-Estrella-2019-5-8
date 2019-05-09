@@ -10,7 +10,10 @@ import Foundation
 import Moya
 
 enum MovieListingTarget {
-    case topRatedMovies(page: Int)
+    case topRated(page: Int)
+    case byName(page: Int)
+    case byYearDesc(page: Int)
+    case byYearAsc(page: Int)
 }
 
 extension MovieListingTarget: TargetType {
@@ -42,13 +45,30 @@ extension MovieListingTarget: TargetType {
     
     var task: Task {
         switch self {
-        case .topRatedMovies(let page):
+        case .topRated(let page):
             return .requestParameters(parameters:  [
                 "sort_by" : "vote_average.desc",
                 "page": page,
                 "api_key": AppConfig.API_KEY
-                ],
-                                      encoding: URLEncoding.queryString)
+                ], encoding: URLEncoding.queryString)
+        case .byName(let page):
+            return .requestParameters(parameters: [
+                "sort_by" : "title",
+                "page" : page,
+                "api_key": AppConfig.API_KEY
+                ], encoding: URLEncoding.queryString)
+        case .byYearAsc(let page):
+            return .requestParameters(parameters: [
+                "sort_by" : "year.asc",
+                "page" : page,
+                "api_key": AppConfig.API_KEY
+                ], encoding: URLEncoding.queryString)
+        case .byYearDesc(let page):
+            return .requestParameters(parameters: [
+                "sort_by" : "year.desc",
+                "page" : page,
+                "api_key": AppConfig.API_KEY
+                ], encoding: URLEncoding.queryString)
         }
     }
 }

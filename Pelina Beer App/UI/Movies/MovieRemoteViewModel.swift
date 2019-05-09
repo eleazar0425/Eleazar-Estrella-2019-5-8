@@ -17,6 +17,7 @@ class MovieRemoteViewModel: MovieViewModelType {
     
     lazy var orderByAction: Action<MovieOrderType, Void>! = {
         Action<MovieOrderType, Void> { orderby in
+            self.orderByProperty.onNext(orderby)
             self.refresh()
             return .empty()
         }
@@ -62,7 +63,7 @@ class MovieRemoteViewModel: MovieViewModelType {
             .flatMapLatest { loadMore, orderBy -> Observable<[Movie]> in
                 guard loadMore else { return .empty() }
                 self.currentPage+=1
-                let movies = service.getMovies(page: self.currentPage, orderBy: .rating)
+                let movies = service.getMovies(page: self.currentPage, orderBy: orderBy)
                 return movies
         }
         

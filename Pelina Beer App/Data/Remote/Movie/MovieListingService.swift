@@ -22,8 +22,18 @@ class MovieListingService: MovieDataSource {
     }
     
     func getMovies(page: Int, orderBy: MovieOrderType) -> Observable<[Movie]> {
-        //Ignore orderByType by now
-        return provider.rx.request(.topRatedMovies(page: page))
+        var target: MovieListingTarget
+        
+        switch orderBy {
+        case .name:
+            target = .byName(page: page)
+        case .year:
+            target = .byYearDesc(page: page)
+        case .rating:
+            target = .topRated(page: page)
+        }
+        
+        return provider.rx.request(target)
             .retry(2)
             .map(to: [Movie].self, keyPath: "results")
             .asObservable()
