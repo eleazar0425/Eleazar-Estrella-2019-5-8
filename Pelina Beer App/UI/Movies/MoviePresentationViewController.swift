@@ -28,11 +28,8 @@ class MoviePresentationViewController: UIViewController {
         
         //Binds contentOffset to viewmodel#loadMore, so it will emit true or false depending on the status of the scroll
         //If scroll is reaching bottom it'll call loadMore (true)
-        self.colllectionView.rx
-            .contentOffset
-            .flatMap { [unowned self] _ in
-                return Observable.just(self.colllectionView.isNearTheBottomEdge())
-            }.distinctUntilChanged()
+        self.colllectionView.rx.reachedBottom()
+            .skipUntil(viewModel.isRefreshing)
             .bind(to: viewModel.loadMore)
             .disposed(by: disposeBag)
         

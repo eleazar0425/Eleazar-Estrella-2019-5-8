@@ -140,8 +140,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date: 2018-30-5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2A-14-9u0">
-                                <rect key="frame" x="5" y="449" width="162" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2A-14-9u0">
+                                <rect key="frame" x="5" y="449" width="87" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -173,6 +173,7 @@
                         <outlet property="calificationBar" destination="8ad-t9-VqW" id="Wux-s7-Yod"/>
                         <outlet property="descriptionTextView" destination="nEU-lb-mzN" id="gvN-oD-311"/>
                         <outlet property="posterImageView" destination="yXP-Sn-WNA" id="uHa-Nw-ck7"/>
+                        <outlet property="releaseDateLabel" destination="o2A-14-9u0" id="Y3p-iz-i87"/>
                         <outlet property="titleLabel" destination="0yb-MN-6Tb" id="pZm-GX-R9e"/>
                     </connections>
                 </viewController>
