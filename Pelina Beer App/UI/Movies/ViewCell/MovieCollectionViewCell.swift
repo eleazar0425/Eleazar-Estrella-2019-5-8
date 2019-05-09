@@ -14,6 +14,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var favoriteToggle: UIButton!
     
+    var viewModel: MovieCellViewModelType = MovieCellViewModel()
+    var movie: Movie?
+    
     var favorite: Bool! {
         didSet {
             favoriteToggle?.isSelected = favorite
@@ -27,6 +30,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBAction func toggleFavoriteAction(_ sender: Any) {
         favorite = !favorite
+        guard let movie = movie else { return }
+        viewModel.isFavoriteAction.execute(Favorite(movie: movie, isFavorite: favorite))
     }
     
     override func awakeFromNib() {
@@ -39,5 +44,6 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func bind(movie: Movie){
         Nuke.loadImage(with: URL(string: AppConfig.IMAGE_BASE_PATH + (movie.poster ?? ""))!, options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33), failureImage: UIImage(named: "placeholder")), into: self.posterImageView)
         self.movieTitle.text = movie.title
+        self.movie = movie
     }
 }

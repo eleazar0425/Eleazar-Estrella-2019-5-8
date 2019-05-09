@@ -17,7 +17,6 @@ class MoviePresentationViewController: UIViewController {
     @IBOutlet weak var colllectionView: UICollectionView!
     var viewModel: MovieViewModelType!
     var disposeBag = DisposeBag()
-    var service = MovieFavoriteService()
     
     override func viewDidLoad() {
         super.viewDidLoad()

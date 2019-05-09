@@ -10,32 +10,46 @@ import Foundation
 import Action
 import RxSwift
 
-class FavoriteMovieViewModel: MovieViewModelType{
+class FavoriteMovieViewModel: MovieViewModelType {
     var movies: Observable<[Movie]>!
     
     var loadMore: BehaviorSubject<Bool>!
     
-    var orderByAction: Action<MovieOrderType, Void>!
-    
     var orderBy: Observable<MovieOrderType>!
-    
-    var movieDetailAction: Action<Movie, Void>!
     
     var isRefreshing: Observable<Bool>!
     
     var service: MovieFavoriteService
     
+    lazy var orderByAction: Action<MovieOrderType, Void>! = {
+        Action<MovieOrderType, Void> { orderby in
+            self.orderByProperty.onNext(orderby)
+            return .empty()
+        }
+    }()
+    
+    lazy var movieDetailAction: Action<Movie, Void>! = {
+        Action<Movie, Void> { movie in
+            self.coordinator.transition(to: .movieDetail(movie: movie))
+            return .empty()
+        }
+    }()
+    
     private let refreshProperty = BehaviorSubject<Bool>(value: true)
     private let orderByProperty = BehaviorSubject<MovieOrderType>(value: .rating)
+    private let coordinator: Coordinator
     
-    init(service: MovieFavoriteService = MovieFavoriteService()){
+    init(service: MovieFavoriteService = MovieFavoriteService(), coordinator: Coordinator? = HomeCoordinator.shared){
         self.service = service
+        
+        self.coordinator = coordinator!
         
         loadMore = BehaviorSubject(value: false)
         isRefreshing = refreshProperty.asObservable()
         orderBy = orderByProperty.asObservable()
         
-        movies = service.getMovies(page: 0, orderBy: .rating)
+        movies = orderBy.flatMapLatest { orderBy -> Observable<[Movie]> in
+            return service.getMovies(page: 0, orderBy: orderBy)
             .flatMap { result -> Observable<[Movie]> in
                 switch result {
                 case let .sucess(movies):
@@ -43,10 +57,11 @@ class FavoriteMovieViewModel: MovieViewModelType{
                 case .error(_):
                     return .empty()
                 }
+            }
         }
     }
     
     func refresh() {
-        
+        //dont care
     }
 }
