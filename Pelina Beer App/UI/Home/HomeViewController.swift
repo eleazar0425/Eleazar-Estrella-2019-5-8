@@ -10,11 +10,11 @@ import UIKit
 
 class HomeViewController: UITabBarController {
     
-    let coordinator = HomeCoordinator()
+    var coordinator: HomeCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.viewControllers = coordinator.viewControllers()
+        coordinator = HomeCoordinator(rootViewController: self)
+        self.viewControllers = coordinator?.viewControllers()
     }
 }

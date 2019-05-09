@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol MovieDataSource {
-    func getMovies(page: Int, orderBy: MovieOrderType) -> Observable<[Movie]>
+    func getMovies(page: Int, orderBy: MovieOrderType) -> Observable<Result<[Movie], String>>
 }

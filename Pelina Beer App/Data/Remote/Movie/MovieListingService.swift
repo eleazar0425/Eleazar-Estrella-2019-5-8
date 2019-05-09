@@ -21,7 +21,7 @@ class MovieListingService: MovieDataSource {
         self.provider = provider
     }
     
-    func getMovies(page: Int, orderBy: MovieOrderType) -> Observable<[Movie]> {
+    func getMovies(page: Int, orderBy: MovieOrderType) -> Observable<Result<[Movie], String>> {
         var target: MovieListingTarget
         
         switch orderBy {
@@ -37,5 +37,7 @@ class MovieListingService: MovieDataSource {
             .retry(2)
             .map(to: [Movie].self, keyPath: "results")
             .asObservable()
+            .map(Result.sucess)
+            .catchError{ .just(.error($0.localizedDescription)) }
     }
 }

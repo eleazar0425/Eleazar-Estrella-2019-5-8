@@ -23,8 +23,7 @@ class MoviePresentationViewController: UIViewController {
         
         //Bind movies to collectionView
         viewModel.movies.bind(to: self.colllectionView.rx.items(cellIdentifier: "movieCollectionViewCell", cellType: MovieCollectionViewCell.self)) { row, movie, cell in
-            cell.posterImageView.image = nil
-            Nuke.loadImage(with: URL(string: AppConfig.IMAGE_BASE_PATH + (movie.poster ?? ""))!, options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33), failureImage: UIImage(named: "placeholder")), into: cell.posterImageView)
+            cell.bind(movie: movie)
         }.disposed(by: disposeBag)
         
         //Binds contentOffset to viewmodel#loadMore, so it will emit true or false depending on the status of the scroll
@@ -37,6 +36,10 @@ class MoviePresentationViewController: UIViewController {
             .bind(to: viewModel.loadMore)
             .disposed(by: disposeBag)
         
+        self.colllectionView.rx.modelSelected(Movie.self)
+            .subscribe(onNext: { movie in
+                print("MOVIE SELECTED: \(movie.title)")
+            }).disposed(by: disposeBag)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"sortIcon"), style: .plain, target: self, action: #selector(showAlertSheet))
 
@@ -51,10 +54,9 @@ class MoviePresentationViewController: UIViewController {
         }
         UIAlertController
             .present(in: self, title: "Sort by: ", message: nil, style: .actionSheet, actions: actions)
-            .distinctUntilChanged()
             .flatMap { index in
                 return Observable.just(MovieOrderType(rawValue: index)!)
-            }.subscribe(onNext: { [unowned self] orderBy in 
+            }.subscribe(onNext: { [unowned self] orderBy in
                 self.viewModel.orderByAction.execute(orderBy)
             }).disposed(by: disposeBag)
     }

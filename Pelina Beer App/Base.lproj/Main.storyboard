@@ -22,41 +22,54 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KU8-tD-oKR">
-                                    <size key="itemSize" width="130" height="160"/>
+                                    <size key="itemSize" width="130" height="190"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCollectionViewCell" id="VPd-zI-tya" customClass="MovieCollectionViewCell" customModule="Pelina_Beer_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="160"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="190"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qf6-2m-6D3">
-                                                    <rect key="frame" x="3" y="3" width="124" height="154"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoriteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qtr-z9-Wd7">
-                                                    <rect key="frame" x="95" y="125" width="30" height="30"/>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="3" y="3" width="124" height="157"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="WH8-94-iTW"/>
-                                                        <constraint firstAttribute="width" constant="30" id="tWz-HW-GOb"/>
+                                                        <constraint firstAttribute="height" constant="157" id="VHw-bZ-bik"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoriteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qtr-z9-Wd7">
+                                                    <rect key="frame" x="100" y="160" width="30" height="30"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="80l-j8-iT8"/>
+                                                        <constraint firstAttribute="width" constant="30" id="WhK-X1-rtd"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harry potter y la orden del fenix" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HO8-MQ-fcV">
+                                                    <rect key="frame" x="3" y="160" width="95" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="qtr-z9-Wd7" secondAttribute="bottom" constant="5" id="BE0-OQ-p2s"/>
+                                            <constraint firstItem="qtr-z9-Wd7" firstAttribute="leading" secondItem="HO8-MQ-fcV" secondAttribute="trailing" constant="2" id="9VY-gD-RV6"/>
                                             <constraint firstAttribute="trailing" secondItem="Qf6-2m-6D3" secondAttribute="trailing" constant="3" id="Cjd-Cd-14w"/>
-                                            <constraint firstAttribute="bottom" secondItem="Qf6-2m-6D3" secondAttribute="bottom" constant="3" id="Cps-CR-yo3"/>
-                                            <constraint firstAttribute="trailing" secondItem="qtr-z9-Wd7" secondAttribute="trailing" constant="5" id="NyP-vF-NMT"/>
+                                            <constraint firstItem="HO8-MQ-fcV" firstAttribute="top" secondItem="Qf6-2m-6D3" secondAttribute="bottom" id="CtP-LC-lLz"/>
+                                            <constraint firstItem="HO8-MQ-fcV" firstAttribute="leading" secondItem="VPd-zI-tya" secondAttribute="leading" constant="3" id="EAm-av-DwA"/>
+                                            <constraint firstAttribute="trailing" secondItem="qtr-z9-Wd7" secondAttribute="trailing" id="TBa-cE-e1s"/>
                                             <constraint firstItem="Qf6-2m-6D3" firstAttribute="leading" secondItem="VPd-zI-tya" secondAttribute="leading" constant="3" id="mKh-bD-JfJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="qtr-z9-Wd7" secondAttribute="bottom" id="p1I-YS-q9t"/>
+                                            <constraint firstAttribute="bottom" secondItem="HO8-MQ-fcV" secondAttribute="bottom" id="u55-aZ-mJZ"/>
                                             <constraint firstItem="Qf6-2m-6D3" firstAttribute="top" secondItem="VPd-zI-tya" secondAttribute="top" constant="3" id="vpZ-Lp-nfu"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="movieTitle" destination="HO8-MQ-fcV" id="f39-lJ-GWp"/>
                                             <outlet property="posterImageView" destination="Qf6-2m-6D3" id="ecT-Ex-lsG"/>
                                         </connections>
                                     </collectionViewCell>
@@ -80,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="1583"/>
+            <point key="canvasLocation" x="136.80000000000001" y="1582.7586206896553"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JWN-an-6tj">

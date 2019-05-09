@@ -59,13 +59,13 @@ extension MovieListingTarget: TargetType {
                 ], encoding: URLEncoding.queryString)
         case .byYearAsc(let page):
             return .requestParameters(parameters: [
-                "sort_by" : "year.asc",
+                "sort_by" : "release_date.asc",
                 "page" : page,
                 "api_key": AppConfig.API_KEY
                 ], encoding: URLEncoding.queryString)
         case .byYearDesc(let page):
             return .requestParameters(parameters: [
-                "sort_by" : "year.desc",
+                "sort_by" : "release_date.desc",
                 "page" : page,
                 "api_key": AppConfig.API_KEY
                 ], encoding: URLEncoding.queryString)
