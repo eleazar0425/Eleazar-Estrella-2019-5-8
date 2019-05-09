@@ -41,34 +41,39 @@
                                                         <constraint firstAttribute="height" constant="157" id="VHw-bZ-bik"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favoriteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qtr-z9-Wd7">
-                                                    <rect key="frame" x="100" y="160" width="30" height="30"/>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="80l-j8-iT8"/>
-                                                        <constraint firstAttribute="width" constant="30" id="WhK-X1-rtd"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Harry potter y la orden del fenix" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HO8-MQ-fcV">
                                                     <rect key="frame" x="3" y="160" width="95" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfR-aa-Ebp">
+                                                    <rect key="frame" x="100" y="160" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="NcK-bx-eRQ"/>
+                                                        <constraint firstAttribute="height" constant="30" id="fkY-MA-5xF"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="toggleFavoriteAction:" destination="VPd-zI-tya" eventType="touchUpInside" id="9XZ-zG-HmZ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="qtr-z9-Wd7" firstAttribute="leading" secondItem="HO8-MQ-fcV" secondAttribute="trailing" constant="2" id="9VY-gD-RV6"/>
                                             <constraint firstAttribute="trailing" secondItem="Qf6-2m-6D3" secondAttribute="trailing" constant="3" id="Cjd-Cd-14w"/>
                                             <constraint firstItem="HO8-MQ-fcV" firstAttribute="top" secondItem="Qf6-2m-6D3" secondAttribute="bottom" id="CtP-LC-lLz"/>
                                             <constraint firstItem="HO8-MQ-fcV" firstAttribute="leading" secondItem="VPd-zI-tya" secondAttribute="leading" constant="3" id="EAm-av-DwA"/>
-                                            <constraint firstAttribute="trailing" secondItem="qtr-z9-Wd7" secondAttribute="trailing" id="TBa-cE-e1s"/>
+                                            <constraint firstItem="WfR-aa-Ebp" firstAttribute="leading" secondItem="HO8-MQ-fcV" secondAttribute="trailing" constant="2" id="Lmd-Vy-fpJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="WfR-aa-Ebp" secondAttribute="trailing" id="RSX-QZ-auO"/>
                                             <constraint firstItem="Qf6-2m-6D3" firstAttribute="leading" secondItem="VPd-zI-tya" secondAttribute="leading" constant="3" id="mKh-bD-JfJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="qtr-z9-Wd7" secondAttribute="bottom" id="p1I-YS-q9t"/>
                                             <constraint firstAttribute="bottom" secondItem="HO8-MQ-fcV" secondAttribute="bottom" id="u55-aZ-mJZ"/>
                                             <constraint firstItem="Qf6-2m-6D3" firstAttribute="top" secondItem="VPd-zI-tya" secondAttribute="top" constant="3" id="vpZ-Lp-nfu"/>
+                                            <constraint firstAttribute="bottom" secondItem="WfR-aa-Ebp" secondAttribute="bottom" id="xbC-Ku-Uok"/>
+                                            <constraint firstItem="WfR-aa-Ebp" firstAttribute="top" secondItem="Qf6-2m-6D3" secondAttribute="bottom" id="yit-ig-j9N"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="favoriteToggle" destination="WfR-aa-Ebp" id="RS4-pC-4du"/>
                                             <outlet property="movieTitle" destination="HO8-MQ-fcV" id="f39-lJ-GWp"/>
                                             <outlet property="posterImageView" destination="Qf6-2m-6D3" id="ecT-Ex-lsG"/>
                                         </connections>
@@ -88,7 +93,7 @@
                     <navigationItem key="navigationItem" title="Pelina Beer" id="hDB-in-TY5"/>
                     <connections>
                         <outlet property="colllectionView" destination="LCm-Om-My2" id="9V7-DY-PJ8"/>
-                        <segue destination="G4f-0M-TRN" kind="show" id="Gbb-02-sSN"/>
+                        <segue destination="G4f-0M-TRN" kind="show" identifier="showDetailViewController" id="Gbb-02-sSN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -192,7 +197,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="oFu-oJ-DYt" kind="show" id="qm4-eb-InX"/>
+                        <segue destination="oFu-oJ-DYt" kind="show" identifier="rootNavigationController" id="qm4-eb-InX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtX-ZC-jhn" userLabel="First Responder" sceneMemberID="firstResponder"/>

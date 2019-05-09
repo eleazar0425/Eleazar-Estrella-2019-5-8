@@ -12,10 +12,28 @@ import Nuke
 class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var favoriteToggle: UIButton!
+    
+    var favorite: Bool! {
+        didSet {
+            favoriteToggle?.isSelected = favorite
+        }
+    }
     
     override func prepareForReuse() {
         self.posterImageView.image = nil
         self.movieTitle.text = ""
+    }
+    
+    @IBAction func toggleFavoriteAction(_ sender: Any) {
+        favorite = !favorite
+    }
+    
+    override func awakeFromNib() {
+        self.favorite = false
+        favoriteToggle?.isSelected = false
+        favoriteToggle?.setImage(#imageLiteral(resourceName: "favoriteIcon").withRenderingMode(.alwaysOriginal), for : .selected)
+        favoriteToggle?.setImage(#imageLiteral(resourceName: "notFavoriteIcon").withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
     func bind(movie: Movie){

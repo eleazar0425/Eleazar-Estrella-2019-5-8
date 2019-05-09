@@ -31,6 +31,9 @@
 		10877B0A228498CD00ED003C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B09228498CD00ED003C /* Result.swift */; };
 		10877B112284A43C00ED003C /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B102284A43C00ED003C /* MovieDetailViewController.swift */; };
 		10877B132284A61100ED003C /* TargetSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B122284A61100ED003C /* TargetSource.swift */; };
+		10877B152284BCB700ED003C /* MovieFavoriteServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B142284BCB700ED003C /* MovieFavoriteServiceType.swift */; };
+		10877B182284BCE800ED003C /* MovieFavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B172284BCE800ED003C /* MovieFavoriteService.swift */; };
+		10877B1A2284C3D000ED003C /* FavoriteMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10877B192284C3D000ED003C /* FavoriteMovieViewModel.swift */; };
 		4686E98D7FA7D050141D86BD /* Pods_Pelina_Beer_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */; };
 		CC2087DDD92EDBD9AD681CA0 /* Pods_Pelina_Beer_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DB3755667C3C0CA717A6E8 /* Pods_Pelina_Beer_AppTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +77,9 @@
 		10877B09228498CD00ED003C /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		10877B102284A43C00ED003C /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		10877B122284A61100ED003C /* TargetSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetSource.swift; sourceTree = "<group>"; };
+		10877B142284BCB700ED003C /* MovieFavoriteServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFavoriteServiceType.swift; sourceTree = "<group>"; };
+		10877B172284BCE800ED003C /* MovieFavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFavoriteService.swift; sourceTree = "<group>"; };
+		10877B192284C3D000ED003C /* FavoriteMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieViewModel.swift; sourceTree = "<group>"; };
 		3AE3E10E42DD5751C8AAA773 /* Pods-Pelina Beer AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer AppTests/Pods-Pelina Beer AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F65A2CE39CDF5F24432946C /* Pods-Pelina Beer App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelina Beer App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelina Beer App/Pods-Pelina Beer App.debug.xcconfig"; sourceTree = "<group>"; };
 		95288120E113FCED22372587 /* Pods_Pelina_Beer_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelina_Beer_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +192,7 @@
 				105ECCF722837B530058A181 /* MovieViewModelType.swift */,
 				105ECCFA22837BD80058A181 /* MovieRemoteViewModel.swift */,
 				105ECCFC228381530058A181 /* MovieCollectionViewCell.swift */,
+				10877B192284C3D000ED003C /* FavoriteMovieViewModel.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -193,9 +200,11 @@
 		105ECCE8228376930058A181 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				10877B162284BCDD00ED003C /* Local */,
 				105ECCE92283769C0058A181 /* Remote */,
 				105ECCEE2283788A0058A181 /* MovieDataSource.swift */,
 				10877B09228498CD00ED003C /* Result.swift */,
+				10877B142284BCB700ED003C /* MovieFavoriteServiceType.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -248,6 +257,14 @@
 				10877B102284A43C00ED003C /* MovieDetailViewController.swift */,
 			);
 			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		10877B162284BCDD00ED003C /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				10877B172284BCE800ED003C /* MovieFavoriteService.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		D36B0004341ECDF3451AFB7D /* Pods */ = {
@@ -408,9 +425,12 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya-ModelMapper/Moya_ModelMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -424,9 +444,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ModelMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,12 +486,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10877B152284BCB700ED003C /* MovieFavoriteServiceType.swift in Sources */,
 				10877B0A228498CD00ED003C /* Result.swift in Sources */,
+				10877B182284BCE800ED003C /* MovieFavoriteService.swift in Sources */,
 				105ECCF3228379600058A181 /* MovieListingService.swift in Sources */,
 				105ECCED228377080058A181 /* AppConfig.swift in Sources */,
 				105ECCF622837A3C0058A181 /* Movie.swift in Sources */,
 				105ECCBD228364FA0058A181 /* ViewController.swift in Sources */,
 				105ECCE5228373C10058A181 /* StoryBoard+main.swift in Sources */,
+				10877B1A2284C3D000ED003C /* FavoriteMovieViewModel.swift in Sources */,
 				105ECCFB22837BD80058A181 /* MovieRemoteViewModel.swift in Sources */,
 				105ECCBB228364FA0058A181 /* AppDelegate.swift in Sources */,
 				105ECCFF228385350058A181 /* ScrollView+isNearBottomEdge.swift in Sources */,

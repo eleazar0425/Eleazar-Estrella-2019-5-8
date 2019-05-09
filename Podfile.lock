@@ -23,9 +23,17 @@ PODS:
     - Moya/Core
     - RxSwift (~> 4.0)
   - Nuke (7.5.1)
+  - Realm (3.12.0):
+    - Realm/Headers (= 3.12.0)
+  - Realm/Headers (3.12.0)
+  - RealmSwift (3.12.0):
+    - Realm (= 3.12.0)
   - Result (3.2.4)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
+  - RxRealm (0.7.6):
+    - RealmSwift (~> 3.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
@@ -36,7 +44,9 @@ DEPENDENCIES:
   - Moya-ModelMapper/RxSwift
   - Moya/RxSwift
   - Nuke
+  - RealmSwift
   - RxCocoa
+  - RxRealm
   - RxSwift
 
 SPEC REPOS:
@@ -48,9 +58,12 @@ SPEC REPOS:
     - Moya
     - Moya-ModelMapper
     - Nuke
+    - Realm
+    - RealmSwift
     - Result
     - RxAtomic
     - RxCocoa
+    - RxRealm
     - RxSwift
 
 SPEC CHECKSUMS:
@@ -61,11 +74,14 @@ SPEC CHECKSUMS:
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Moya-ModelMapper: 35209257d9e886cedf91289559a41723f5fbd095
   Nuke: 3814db501e55f17951451839c726ffd91641e9a5
+  Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
+  RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxRealm: 5379eddd74f8d617ca7681d1f8d144af25b432b0
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 0eacdba377d29a08d2ce8076b77812768e8461b2
+PODFILE CHECKSUM: fdf6a799a933c2cb7a05481dbc18e9a8a7a4a35c
 
 COCOAPODS: 1.5.3

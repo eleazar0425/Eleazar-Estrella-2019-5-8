@@ -39,7 +39,7 @@ class HomeCoordinator: Coordinator {
         let secondViewController = UIStoryboard.main().instantiateViewController(withIdentifier: "moviesPresentationViewController") as! MoviePresentationViewController
         secondViewController.title = "Favorites"
         secondViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        secondViewController.viewModel = MovieRemoteViewModel()
+        secondViewController.viewModel = FavoriteMovieViewModel()
         
         return [UINavigationController(rootViewController: firstViewController), UINavigationController(rootViewController: secondViewController)]
     }
