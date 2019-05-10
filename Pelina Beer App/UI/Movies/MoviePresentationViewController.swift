@@ -39,6 +39,17 @@ class MoviePresentationViewController: UIViewController {
                 self.viewModel.movieDetailAction.execute(movie)
             }).disposed(by: disposeBag)
         
+        self.viewModel.movies
+            .asObservable()
+            .flatMap { movies -> Observable<Bool> in
+                return .just(movies.count > 0)
+            }.subscribe(onNext: {
+                if $0 {
+                    self.colllectionView.removeNoElementsBackground()
+                }else {
+                    self.colllectionView.showNoElementsBackground()
+                }
+            }).disposed(by: disposeBag)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"sortIcon"), style: .plain, target: self, action: #selector(showAlertSheet))
 
