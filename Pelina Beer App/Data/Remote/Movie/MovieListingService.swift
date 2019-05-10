@@ -40,4 +40,12 @@ class MovieListingService: MovieDataSource {
             .map(Result.sucess)
             .catchError{ .just(.error($0.localizedDescription)) }
     }
+    
+    func search(query: String, page: Int) -> Observable<Result<[Movie], String>> {
+        return provider.rx.request(.search(query: query, page: page))
+            .map(to: [Movie].self, keyPath: "results")
+            .asObservable()
+            .map(Result.sucess)
+            .catchError{ .just(.error($0.localizedDescription)) }
+    }
 }

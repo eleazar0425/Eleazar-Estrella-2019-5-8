@@ -11,4 +11,5 @@ import RxSwift
 
 protocol MovieDataSource {
     func getMovies(page: Int, orderBy: MovieOrderType) -> Observable<Result<[Movie], String>>
+    func search(query: String, page: Int) -> Observable<Result<[Movie], String>>
 }

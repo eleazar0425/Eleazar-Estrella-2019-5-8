@@ -14,6 +14,7 @@ enum MovieListingTarget {
     case byName(page: Int)
     case byYearDesc(page: Int)
     case byYearAsc(page: Int)
+    case search(query: String, page: Int)
 }
 
 extension MovieListingTarget: TargetType {
@@ -26,6 +27,8 @@ extension MovieListingTarget: TargetType {
     
     var path: String {
         switch self {
+        case .search(_,_):
+            return "/search/movie"
         default:
             return "/discover/movie"
         }
@@ -66,6 +69,12 @@ extension MovieListingTarget: TargetType {
         case .byYearDesc(let page):
             return .requestParameters(parameters: [
                 "sort_by" : "release_date.desc",
+                "page" : page,
+                "api_key": AppConfig.API_KEY
+                ], encoding: URLEncoding.queryString)
+        case let .search(query, page):
+            return .requestParameters(parameters: [
+                "query": query,
                 "page" : page,
                 "api_key": AppConfig.API_KEY
                 ], encoding: URLEncoding.queryString)

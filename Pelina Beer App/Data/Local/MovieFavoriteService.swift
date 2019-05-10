@@ -12,7 +12,6 @@ import RxRealm
 import RxSwift
 
 class MovieFavoriteService: MovieFavoriteServiceType, MovieDataSource {
-    
     var realm: Realm
     
     init(realm: Realm = try! Realm()){
@@ -62,5 +61,17 @@ class MovieFavoriteService: MovieFavoriteServiceType, MovieDataSource {
             return $0.id == movie.id //objects can change on the fly
             //consequently is better to validate this with de matched id
         })
+    }
+    
+    func search(query: String, page: Int) -> Observable<Result<[Movie], String>> {
+        let objects = realm.objects(Movie.self).filter { $0.title.contains(query)}
+        var objectsArray = [Movie]()
+        for object in objects {
+            objectsArray.append(object)
+        }
+        
+        return Observable.just(objectsArray)
+            .asObservable()
+            .map(Result.sucess)
     }
 }

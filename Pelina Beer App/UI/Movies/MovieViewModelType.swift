@@ -25,4 +25,6 @@ protocol MovieViewModelType {
     var isRefreshing: Observable<Bool>! { get }
     
     func refresh()
+    
+    var searchString: BehaviorSubject<String?> { get }
 }

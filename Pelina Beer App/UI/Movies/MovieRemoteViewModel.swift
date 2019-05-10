@@ -11,9 +11,10 @@ import RxSwift
 import Action
 
 class MovieRemoteViewModel: MovieViewModelType {
-    
     var movies: Observable<[Movie]>!
     var loadMore: BehaviorSubject<Bool>!
+    var searchString: BehaviorSubject<String?>
+    var loadingResults: Observable<Bool>!
     
     lazy var orderByAction: Action<MovieOrderType, Void>! = {
         Action<MovieOrderType, Void> { orderby in
@@ -32,9 +33,12 @@ class MovieRemoteViewModel: MovieViewModelType {
     
     var orderBy: Observable<MovieOrderType>!
     var isRefreshing: Observable<Bool>!
+    var isRefreshingSearchResults: Observable<Bool>!
     
     private let refreshProperty = BehaviorSubject<Bool>(value: true)
+    private let searchResultProperty = BehaviorSubject<Bool>(value: true)
     private let orderByProperty = BehaviorSubject<MovieOrderType>(value: .rating)
+    private let loadingResultsProperty = BehaviorSubject<Bool>(value: false)
     
     var currentPage = 1
     var service: MovieListingService
@@ -51,6 +55,10 @@ class MovieRemoteViewModel: MovieViewModelType {
         
         isRefreshing = refreshProperty.asObservable()
         orderBy = orderByProperty.asObservable()
+        loadingResults = loadingResultsProperty.asObservable()
+        
+        searchString = BehaviorSubject<String?>(value: nil)
+        isRefreshingSearchResults = searchResultProperty.asObservable()
         
         let firstRequest = Observable.combineLatest(isRefreshing, orderBy)
             .flatMapLatest { isRefreshing, orderBy -> Observable<[Movie]> in
@@ -68,9 +76,10 @@ class MovieRemoteViewModel: MovieViewModelType {
                     })
             }
 
-        let nextRequest = Observable.combineLatest(loadMore, orderBy)
-            .flatMapLatest { loadMore, orderBy -> Observable<[Movie]> in
+        let nextRequest = Observable.combineLatest(loadMore, orderBy, loadingResults)
+            .flatMapLatest { loadMore, orderBy, loadingResults -> Observable<[Movie]> in
                 guard loadMore else { return .empty() }
+                guard !loadingResults else { return .empty() }
                 self.currentPage+=1
                 return service.getMovies(page: self.currentPage, orderBy: orderBy)
                     .flatMap { [unowned self] result -> Observable<[Movie]> in
@@ -85,7 +94,50 @@ class MovieRemoteViewModel: MovieViewModelType {
                 }
         }
         
-        movies = Observable.merge(firstRequest, nextRequest)
+        let firstSearchRequest = Observable.combineLatest(isRefreshingSearchResults, searchString)
+            .flatMapLatest { isRefreshingSearchResults, searchString -> Observable<[Movie]> in
+                guard isRefreshingSearchResults else {
+                    return .empty()
+                }
+                guard let searchString = searchString, !searchString.isEmpty else {
+                    self.refresh()
+                    self.orderByProperty.onNext(.rating)
+                    return .empty()
+                }
+                return service.search(query: searchString, page: self.currentPage)
+                    .flatMap{ [unowned self] result -> Observable<[Movie]> in
+                        switch result{
+                        case let .sucess(movies):
+                            self.moviesArray = []
+                            self.loadingResultsProperty.onNext(true)
+                            return .just(movies)
+                        case let .error(error):
+                            coordinator?.presentSimpleDialog(alertViewModel: AlertViewModel(message: error, title: "Ups..."))
+                            self.searchResultProperty.onNext(false)
+                            return .empty()
+                        }
+                }
+        }
+        
+        let nextSearchRequest = Observable.combineLatest(loadMore, searchString)
+            .flatMapLatest { loadMore, searchString -> Observable<[Movie]> in
+                guard loadMore else { return .empty()}
+                guard let searchString = searchString, !searchString.isEmpty else { return .empty()}
+                self.currentPage+=1
+                return service.search(query: searchString, page: self.currentPage)
+                    .flatMap{ [unowned self] result -> Observable<[Movie]> in
+                        switch result{
+                        case let .sucess(movies):
+                            return .just(movies)
+                        case let .error(error):
+                            coordinator?.presentSimpleDialog(alertViewModel: AlertViewModel(message: error, title: "Ups..."))
+                            self.searchResultProperty.onNext(false)
+                            return .empty()
+                        }
+                }
+        }
+        
+        movies = Observable.merge(firstRequest, nextRequest, firstSearchRequest, nextSearchRequest)
             .map { movies -> [Movie] in
                 for movie in movies {
                     self.moviesArray.append(movie)
@@ -99,6 +151,7 @@ class MovieRemoteViewModel: MovieViewModelType {
         self.moviesArray = []
         self.currentPage = 1
         self.refreshProperty.onNext(true)
+        self.loadingResultsProperty.onNext(false)
     }
     
 }

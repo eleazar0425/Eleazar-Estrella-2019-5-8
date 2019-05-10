@@ -11,11 +11,14 @@ import Action
 import RxSwift
 
 class FavoriteMovieViewModel: MovieViewModelType {
+    
     var movies: Observable<[Movie]>!
     
     var loadMore: BehaviorSubject<Bool>!
     
     var orderBy: Observable<MovieOrderType>!
+    
+    var searchString: BehaviorSubject<String?>
     
     var isRefreshing: Observable<Bool>!
     
@@ -39,6 +42,7 @@ class FavoriteMovieViewModel: MovieViewModelType {
     private let orderByProperty = BehaviorSubject<MovieOrderType>(value: .rating)
     private let coordinator: Coordinator
     
+    
     init(service: MovieFavoriteService = MovieFavoriteService(), coordinator: Coordinator? = HomeCoordinator.shared){
         self.service = service
         
@@ -47,21 +51,35 @@ class FavoriteMovieViewModel: MovieViewModelType {
         loadMore = BehaviorSubject(value: false)
         isRefreshing = refreshProperty.asObservable()
         orderBy = orderByProperty.asObservable()
+        searchString = BehaviorSubject<String?>(value: nil)
         
-        movies = orderBy.flatMapLatest { orderBy -> Observable<[Movie]> in
-            return service.getMovies(page: 0, orderBy: orderBy)
-            .flatMap { result -> Observable<[Movie]> in
-                switch result {
-                case let .sucess(movies):
-                    return .just(movies)
-                case .error(_):
-                    return .empty()
+        movies = Observable.combineLatest(orderBy, searchString)
+            .flatMapLatest { orderBy, searchString -> Observable<[Movie]> in
+                guard let searchString = searchString, !searchString.isEmpty else {
+                    return service.getMovies(page: 0, orderBy: orderBy)
+                        .flatMap { result -> Observable<[Movie]> in
+                            switch result {
+                            case let .sucess(movies):
+                                return .just(movies)
+                            case .error(_):
+                                return .empty()
+                            }
+                    }
+                }
+                
+                return service.search(query: searchString, page: 0)
+                    .flatMap{ result -> Observable<[Movie]> in
+                        switch result {
+                        case let .sucess(movies):
+                            return .just(movies)
+                        case .error(_):
+                            return .empty()
+                        }
                 }
             }
-        }
     }
     
     func refresh() {
-        //dont care
+        
     }
 }

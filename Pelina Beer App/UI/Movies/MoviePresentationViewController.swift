@@ -17,6 +17,7 @@ class MoviePresentationViewController: UIViewController {
     @IBOutlet weak var colllectionView: UICollectionView!
     var viewModel: MovieViewModelType!
     var disposeBag = DisposeBag()
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +39,22 @@ class MoviePresentationViewController: UIViewController {
                 self.viewModel.movieDetailAction.execute(movie)
             }).disposed(by: disposeBag)
         
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"sortIcon"), style: .plain, target: self, action: #selector(showAlertSheet))
 
+        searchController = UISearchController(searchResultsController: nil)
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        searchController.searchBar.rx
+            .text
+            .throttle(0.5, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .bind(to: viewModel.searchString).disposed(by: disposeBag)
     }
-    
-    
+
     @objc func showAlertSheet(){
         //Create a fixed size array
         var actions = [UIAlertController.AlertAction]()
