@@ -15,7 +15,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var favoriteToggle: UIButton!
     
-    var viewModel: MovieCellViewModelType = MovieCellViewModel()
+    var viewModel: MovieToggleFavoriteViewModelType = MovieToggleFavoriteViewModel()
     var movie: Movie?
     var disposeBag = DisposeBag()
     

@@ -21,7 +21,7 @@ class MovieDetailViewController: UIViewController {
     
     var movie: Movie?
     
-    var viewModel: MovieCellViewModelType! = MovieCellViewModel()
+    var viewModel: MovieToggleFavoriteViewModelType! = MovieToggleFavoriteViewModel()
     
     var disposeBag = DisposeBag()
     

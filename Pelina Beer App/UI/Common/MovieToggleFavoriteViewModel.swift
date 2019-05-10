@@ -10,14 +10,14 @@ import Foundation
 import Action
 import RxSwift
 
-protocol MovieCellViewModelType {
+protocol MovieToggleFavoriteViewModelType {
     var isFavoriteAction: Action<Favorite, Void>! { get }
     
     var favoriteMovieOutput: Observable<Favorite>! { get }
     var movieAction: Action<Movie, Void>! { get }
 }
 
-class MovieCellViewModel: MovieCellViewModelType {
+class MovieToggleFavoriteViewModel: MovieToggleFavoriteViewModelType {
     lazy var isFavoriteAction: Action<Favorite, Void>! = {
         Action<Favorite, Void> { [unowned self] favorite in
             if favorite.isFavorite {
