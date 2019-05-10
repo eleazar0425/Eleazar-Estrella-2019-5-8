@@ -15,7 +15,7 @@ class MovieFavoriteService: MovieFavoriteServiceType, MovieDataSource {
     
     var realm: Realm
     
-    init(realm: Realm = AppConfig.realmInstance){
+    init(realm: Realm = try! Realm()){
         self.realm = realm
     }
     
@@ -56,6 +56,11 @@ class MovieFavoriteService: MovieFavoriteServiceType, MovieDataSource {
     }
     
     func isFavorite(movie: Movie) -> Bool {
-        return realm.objects(Movie.self).contains(movie)
+        if movie.isInvalidated { return false }
+        return realm.objects(Movie.self).contains(where: {
+            if $0.isInvalidated { return false }
+            return $0.id == movie.id //objects can change on the fly
+            //consequently is better to validate this with de matched id
+        })
     }
 }

@@ -146,7 +146,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2A-14-9u0">
-                                <rect key="frame" x="5" y="449" width="87" height="17"/>
+                                <rect key="frame" x="5" y="449" width="365" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -163,6 +163,7 @@
                             <constraint firstItem="jHk-Bb-omg" firstAttribute="trailing" secondItem="nEU-lb-mzN" secondAttribute="trailing" constant="5" id="Hsa-s0-YEi"/>
                             <constraint firstItem="xfH-fe-OBv" firstAttribute="leading" secondItem="0yb-MN-6Tb" secondAttribute="trailing" constant="5" id="MqD-C4-ozz"/>
                             <constraint firstItem="xfH-fe-OBv" firstAttribute="top" secondItem="yXP-Sn-WNA" secondAttribute="bottom" constant="5" id="Psj-mH-SYB"/>
+                            <constraint firstItem="jHk-Bb-omg" firstAttribute="trailing" secondItem="o2A-14-9u0" secondAttribute="trailing" constant="5" id="SPd-N5-VFc"/>
                             <constraint firstItem="jHk-Bb-omg" firstAttribute="trailing" secondItem="yXP-Sn-WNA" secondAttribute="trailing" id="SPk-86-wsZ"/>
                             <constraint firstItem="yXP-Sn-WNA" firstAttribute="top" secondItem="jHk-Bb-omg" secondAttribute="top" id="UXt-J4-dop"/>
                             <constraint firstItem="o2A-14-9u0" firstAttribute="top" secondItem="0yb-MN-6Tb" secondAttribute="bottom" constant="5" id="e4J-cN-549"/>

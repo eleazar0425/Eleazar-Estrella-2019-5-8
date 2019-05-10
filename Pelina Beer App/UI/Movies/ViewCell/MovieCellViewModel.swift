@@ -46,21 +46,8 @@ class MovieCellViewModel: MovieCellViewModelType {
         self.service = service
         
         favoriteMovieOutput = Observable.combineLatest(movieProperty, service.getMovies(page: 0, orderBy: .name))
-            .flatMapLatest({ movie, result -> Observable<Favorite> in
-                var isFavorite = false
-                switch result{
-                case let .sucess(movies):
-                    isFavorite = movies.contains {
-                        if !$0.isInvalidated {
-                            return $0.id == movie.id //objects can change on the fly
-                            //consequently is better to validate this with de matched id
-                        }
-                        
-                        return false
-                    }
-                case .error(_):
-                    break
-                }
+            .flatMapLatest({ [unowned self] movie, result -> Observable<Favorite> in
+                let isFavorite = self.service.isFavorite(movie: movie)
                 return .just(Favorite(movie: movie, isFavorite: isFavorite))
             })
     }
