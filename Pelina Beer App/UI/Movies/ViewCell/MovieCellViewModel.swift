@@ -12,6 +12,9 @@ import RxSwift
 
 protocol MovieCellViewModelType {
     var isFavoriteAction: Action<Favorite, Void>! { get }
+    
+    var favoriteMovieOutput: Observable<Favorite>! { get }
+    var movieAction: Action<Movie, Void>! { get }
 }
 
 class MovieCellViewModel: MovieCellViewModelType {
@@ -26,11 +29,39 @@ class MovieCellViewModel: MovieCellViewModelType {
         }
     }()
     
-    var service: MovieFavoriteServiceType
+    lazy var movieAction: Action<Movie, Void>! = {
+        Action<Movie, Void> { [unowned self] movie in
+            self.movieProperty.onNext(movie)
+            return .empty()
+        }
+    }()
     
-    private let favoriteProperty = BehaviorSubject<Bool>(value: false)
+    var favoriteMovieOutput: Observable<Favorite>!
     
-    init(service: MovieFavoriteServiceType = MovieFavoriteService()){
+    var service: MovieFavoriteServiceType & MovieDataSource
+    
+    var movieProperty = PublishSubject<Movie>()
+    
+    init(service: MovieFavoriteServiceType & MovieDataSource = MovieFavoriteService()){
         self.service = service
+        
+        favoriteMovieOutput = Observable.combineLatest(movieProperty, service.getMovies(page: 0, orderBy: .name))
+            .flatMapLatest({ movie, result -> Observable<Favorite> in
+                var isFavorite = false
+                switch result{
+                case let .sucess(movies):
+                    isFavorite = movies.contains {
+                        if !$0.isInvalidated {
+                            return $0.id == movie.id //objects can change on the fly
+                            //consequently is better to validate this with de matched id
+                        }
+                        
+                        return false
+                    }
+                case .error(_):
+                    break
+                }
+                return .just(Favorite(movie: movie, isFavorite: isFavorite))
+            })
     }
 }

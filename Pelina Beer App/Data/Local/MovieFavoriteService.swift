@@ -11,11 +11,11 @@ import RealmSwift
 import RxRealm
 import RxSwift
 
-class MovieFavoriteService: MovieFavoriteServiceType, MovieDataSource{
+class MovieFavoriteService: MovieFavoriteServiceType, MovieDataSource {
     
     var realm: Realm
     
-    init(realm: Realm = try! Realm()){
+    init(realm: Realm = AppConfig.realmInstance){
         self.realm = realm
     }
     
@@ -44,12 +44,14 @@ class MovieFavoriteService: MovieFavoriteServiceType, MovieDataSource{
     }
     
     func saveFavorite(movie: Movie) -> Disposable {
-        return Observable.from([movie])
+        let movieObject: Movie = Movie(value: movie)
+        return Observable.from([movieObject])
             .subscribe(Realm.rx.add(update: true))
     }
     
     func deleteFavorite(movie: Movie) -> Disposable {
-        return Observable.from([movie])
+        let movieObject = realm.objects(Movie.self).first(where: { $0.id == movie.id })
+        return Observable.from(optional: movieObject)
             .subscribe(Realm.rx.delete())
     }
     

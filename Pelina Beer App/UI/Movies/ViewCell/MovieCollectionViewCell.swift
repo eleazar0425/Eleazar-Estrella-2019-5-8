@@ -8,6 +8,7 @@
 
 import UIKit
 import Nuke
+import RxSwift
 
 class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
@@ -16,6 +17,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     var viewModel: MovieCellViewModelType = MovieCellViewModel()
     var movie: Movie?
+    var disposeBag = DisposeBag()
     
     var favorite: Bool! {
         didSet {
@@ -39,11 +41,16 @@ class MovieCollectionViewCell: UICollectionViewCell {
         favoriteToggle?.isSelected = false
         favoriteToggle?.setImage(#imageLiteral(resourceName: "favoriteIcon").withRenderingMode(.alwaysOriginal), for : .selected)
         favoriteToggle?.setImage(#imageLiteral(resourceName: "notFavoriteIcon").withRenderingMode(.alwaysOriginal), for: .normal)
+        viewModel.favoriteMovieOutput
+            .subscribe(onNext: {
+                self.favorite = $0.isFavorite
+            }).disposed(by: disposeBag)
     }
     
     func bind(movie: Movie){
         Nuke.loadImage(with: URL(string: AppConfig.IMAGE_BASE_PATH + (movie.poster ?? ""))!, options: ImageLoadingOptions(transition: .fadeIn(duration: 0.33), failureImage: UIImage(named: "placeholder")), into: self.posterImageView)
         self.movieTitle.text = movie.title
         self.movie = movie
+        self.viewModel.movieAction.execute(movie)
     }
 }
