@@ -15,6 +15,7 @@ target 'Pelina Beer App' do
   pod 'Cosmos'
   pod 'RealmSwift'
   pod 'RxRealm'
+  pod 'RxTest'
   
   target 'Pelina Beer AppTests' do
     inherit! :search_paths
