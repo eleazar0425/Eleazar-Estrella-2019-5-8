@@ -9,94 +9,78 @@
 import XCTest
 import RxTest
 import RxSwift
-import Mapper
+import Quick
+import Nimble
 
 @testable import Pelina_Beer_App
 
-class Pelina_Beer_AppTests: XCTestCase {
+class Pelina_Beer_AppTests: QuickSpec {
     
-    var scheduler: TestScheduler!
-    var disposeBag: DisposeBag!
-    var mockService: MockService!
-    var viewModel: MovieRemoteViewModel!
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.scheduler = TestScheduler(initialClock: 0)
-        self.disposeBag = DisposeBag()
-        self.mockService = MockService()
-        self.viewModel = MovieRemoteViewModel(service: mockService, coordinator: FakeCoordinator())
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        self.scheduler = nil
-        self.disposeBag = nil
-        self.mockService = nil
-        self.viewModel = nil
-    }
-
-    func testViewModelShouldCallForMoreMovies(){
-        let loadMore = scheduler.createColdObservable([
-            .next(100, true),
-            .next(200, true),
-            .next(300, true),
-            .next(400, true)
-            ])
+    override func spec() {
+        var scheduler: TestScheduler!
+        var disposeBag: DisposeBag!
+        var mockService: MockService!
+        var viewModel: MovieRemoteViewModel!
+        var loadMore: TestableObservable<Bool>!
+        var moviesObserver: TestableObserver<[Movie]>!
         
-        loadMore.bind(to: viewModel.loadMore)
-            .disposed(by: disposeBag)
-        
-        
-        let moviesObserver = scheduler.createObserver([Movie].self)
-        
-        viewModel.movies.bind(to: moviesObserver)
-            .disposed(by: disposeBag)
-        
-        assert(moviesObserver.events.last!.time == 400)
-        let movies = moviesObserver.events.last!.value.element!
-        assert(movies.count == 5)
-    }
-    
-    func testViewModelShouldResetPageCountWhenSearchIsExcuted(){
-        let loadMore = scheduler.createColdObservable([
-            .next(100, true),
-            .next(200, true),
-            .next(300, true),
-            .next(400, true)
-            ])
-        
-        loadMore.bind(to: viewModel.loadMore)
-            .disposed(by: disposeBag)
-        
-        let searchString = "search query"
-        viewModel.searchString.onNext(searchString)
-        
-        assert(viewModel.currentPage == 1)
-        
-    }
-    
-    func testViewModelShouldRefreshModelWhenSearchIsExecuted(){
-        let loadMore = scheduler.createColdObservable([
-            .next(100, true),
-            .next(200, true),
-            .next(300, true),
-            .next(400, true)
-            ])
-        
-        loadMore.bind(to: viewModel.loadMore)
-            .disposed(by: disposeBag)
-        
-        viewModel.searchString.onNext("First query")
-        
-        let moviesObserver = scheduler.createObserver([Movie].self)
-        
-        viewModel.movies.bind(to: moviesObserver)
-            .disposed(by: disposeBag)
-        
-        let movies = moviesObserver.events.last!.value.element!
-        
-        assert(movies.count == 1)
-        
+        describe("MoviewsPresentationSpec") {
+            context("After viewModel is initialized") {
+                beforeEach {
+                    scheduler = TestScheduler(initialClock: 0)
+                    disposeBag = DisposeBag()
+                    mockService = MockService()
+                    viewModel = MovieRemoteViewModel(service: mockService, coordinator: FakeCoordinator())
+                    moviesObserver = scheduler.createObserver([Movie].self)
+                    loadMore = scheduler.createColdObservable([
+                        .next(100, true),
+                        .next(200, true),
+                        .next(300, true),
+                        .next(400, true)
+                        ])
+                }
+                
+                context("after load more observable is triggered"){
+                    beforeEach {
+                        viewModel = MovieRemoteViewModel(service: mockService, coordinator: FakeCoordinator())
+                    }
+                    
+                    it("should have loaded the first 20 elements"){
+                        
+                        viewModel.movies.bind(to: moviesObserver)
+                            .disposed(by: disposeBag)
+                        
+                        expect(viewModel.currentPage).to(equal(1))
+                        expect(moviesObserver.events.last?.value.element?.count).to(equal(20))
+                    }
+                    
+                    it("should have loaded 4 more pages"){
+                        loadMore.bind(to: viewModel.loadMore)
+                            .disposed(by: disposeBag)
+                        
+                        viewModel.movies.bind(to: moviesObserver)
+                            .disposed(by: disposeBag)
+                        
+                        scheduler.start()
+                        expect(viewModel.currentPage).to(equal(5))
+                        expect(moviesObserver.events.last?.value.element?.count).to(equal(100))
+                    }
+                    
+                    it("should reset the page count and retreive search results"){
+                        
+                        loadMore.bind(to: viewModel.loadMore)
+                            .disposed(by: disposeBag)
+                        
+                        viewModel.movies.bind(to: moviesObserver)
+                            .disposed(by: disposeBag)
+                        
+                        viewModel.searchString.onNext("search query has been done")
+                        
+                        expect(viewModel.currentPage).to(equal(1))
+                        expect(moviesObserver.events.last?.value.element?.count).to(equal(20))
+                    }
+                }
+            }
+        }
     }
 }
