@@ -40,7 +40,7 @@ class Pelina_Beer_AppTests: QuickSpec {
                         ])
                 }
                 
-                context("after load more observable is triggered"){
+                context("after viewModel its created"){
                     beforeEach {
                         viewModel = MovieRemoteViewModel(service: mockService, coordinator: FakeCoordinator())
                     }
@@ -75,6 +75,20 @@ class Pelina_Beer_AppTests: QuickSpec {
                             .disposed(by: disposeBag)
                         
                         viewModel.searchString.onNext("search query has been done")
+                        
+                        expect(viewModel.currentPage).to(equal(1))
+                        expect(moviesObserver.events.last?.value.element?.count).to(equal(20))
+                    }
+                    
+                    it("should load reset the page count and retreive new sorted results"){
+                        
+                        loadMore.bind(to: viewModel.loadMore)
+                            .disposed(by: disposeBag)
+                        
+                        viewModel.movies.bind(to: moviesObserver)
+                            .disposed(by: disposeBag)
+                        
+                        viewModel.orderByAction.execute(.year)
                         
                         expect(viewModel.currentPage).to(equal(1))
                         expect(moviesObserver.events.last?.value.element?.count).to(equal(20))
