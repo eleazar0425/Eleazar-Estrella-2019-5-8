@@ -18,8 +18,8 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    runt_tests(project: "Pelina Beer App.xcworkspace", devices: ["iPhone 8"], scheme: "Pelina Beer App")
-    build_app(workspace: "Pelina Beer App.xcworkspace", scheme: "Pelina Beer App")
+    run_tests(workspace: "Pelina Beer App.xcworkspace", devices: ["iPhone 8"], scheme: "Pelina Beer App")
+    build_app(workspace: "Pelina Beer App.xcworkspace", scheme: "Pelina Beer App", clean: true, silent: true, include_bitcode: false, export_xcargs: "-allowProvisioningUpdates")
     upload_to_testflight
   end
 end
